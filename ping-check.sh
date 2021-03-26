@@ -3,7 +3,7 @@
 # variables
 HOSTS="google.com"
 COUNT=5
-ping-result=/var/log/scripts/ping-check-result.log
+ping_result=/var/log/scripts/ping-check-result.log
 
 ######
 echo "Pinging.."
@@ -19,7 +19,7 @@ do
 
   if [ $counting > 2 ]; then
    echo "Ping OK"
-   #echo "$(date +"%T") : Internet connectivity is ONLINE!" >> $ping-result
+   #echo "$(date +"%T") : Internet connectivity is ONLINE!" >> $ping_result
 
   else
    # network down
@@ -27,7 +27,7 @@ do
    /etc/rc.backup_rrd.sh
 
    #send error to log
-   echo "$(date +"%T") : Internet connectivity is OFFLINE!" >> $ping-result
+   echo "$(date +"%T") : Internet connectivity is OFFLINE!" >> $ping_result
 
    echo "Service restarting..."
    #Restart service
