@@ -19,7 +19,7 @@ do
 
   if [ $counting > 2 ]; then
    echo "Ping OK"
-   #echo "$(date +"%T") : Internet connectivity is ONLINE!" >> $ping_output
+   #echo "$(date +"%d-%m-%Y") : Internet connectivity is ONLINE!" >> $ping_output
 
   else
    # network down
@@ -27,7 +27,7 @@ do
    /etc/rc.backup_rrd.sh
 
    #send error to log
-   echo "$(date +"%T") : Internet connectivity is OFFLINE!" >> $ping_output
+   echo "$(date +"%d-%m-%Y") : Internet connectivity is OFFLINE!" >> $ping_output
 
    echo "Service restarting..."
    #Restart service
