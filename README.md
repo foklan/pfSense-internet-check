@@ -34,4 +34,35 @@ Click "Save"
 
 
 ## Instructions to setup mail notifications
-...work in progress
+### 1. Setup your email accounts for notiications
+	- #### System > Advanced > Notifications > E-Mail
+	- if you want to use gmail account then setup should look like this:
+		- Disable SMTP = UNCHECK
+		- E-Mail server = smtp.gmail.com
+		- SMTP Port of E-Mail server = 465 (don't forget to allow this port in FW)
+		- Connection timeout to E-Mail server = 19
+		- Secure SMTP Connection = CHECK
+		-  Validate SSL/TLS = CHECK
+		-  From e-mail address = email which you want to send emails from
+		-  Notification E-Mail address = notification email destination
+		-  Notification E-Mail auth password = password for "From e-mail address"
+		-  Notification E-Mail auth mechanism = PLAIN
+### 2. Setup Email report
+	- #### Staus > Email Reports
+	- Add New Report
+		- Enter Description
+		- Choose frequency and on which day report should be generated
+		- In section **Included Commands** enter your command which result will be shown in your report
+			- In my case I'm saving ping results in "/var/log/scripts/ping-check-result.log" so I'll use this command: `/bin/cat /var/log/scripts/ping-check-result.log`
+		- Save
+### 3. Deleting report content from previous day
+	- If you are running reports everyday as I am then you may need to clear old report data each day because if you won't then you'll have data from previous days which may not be desirable. In this case you can solve this problem with setting up a script and execute it by cron everyday at 00:02
+
+This is that simple script to remove old data from report:
+It will overwrite report lines and print current date in header
+``` bash
+#!/bin/sh
+
+now=$(date +"%m-%d-%y")
+echo "Start of day $now" > /var/log/scripts/ping-check-result.log
+```
