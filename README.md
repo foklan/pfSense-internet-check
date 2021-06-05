@@ -34,6 +34,8 @@ Click "Save"
 
 
 ## Instructions to setup mail notifications
+In this section we will setup email reports which will be generated once a day and send to email at midnight (00:01)
+
 1. ### Setup your email accounts for notiications
 	- #### System > Advanced > Notifications > E-Mail
 	- if you want to use gmail account then setup should look like this:
