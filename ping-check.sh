@@ -17,7 +17,7 @@ do
   counting=$(ping -c $COUNT $myHost | grep 'received' | awk -F',' '{ print $2 }' | awk '{ print $1 }' )
   echo "counting: " $counting
 
-  if [ $counting > 2 ]; then
+  if [ $counting -gt 2 ]; then
    echo "Ping OK"
    #echo "$(date +"%H:%M:%S") : Internet connectivity is ONLINE!" >> $ping_output
 
